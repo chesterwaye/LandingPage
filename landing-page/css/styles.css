@@ -59,6 +59,9 @@ section {
     position: relative;
     min-height: 80vh;
 }
+li {
+  float: left;
+}
 
 
 /* ---- Module Rules ---- */
