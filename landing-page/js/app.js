@@ -19,7 +19,7 @@
 */
 const navMenu = document.getElementById('navbar__list');
 
-
+const links = document.querySelectorAll('.menu__link');
 const sec = document.querySelectorAll('section');
 
 const secs = document.getElementsByTagName("section");
@@ -65,6 +65,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
 /**
  * End Main Functions
  * Begin Events
@@ -80,10 +81,41 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Add class 'active' to section when it is near top of viewport
 
 
+// Add class 'active' to section when it is near top of viewport
 
+const addActiveClass = (isInViewport) => {
+    document.addEventListener("scroll", () => {
+        for (let i = 0; i < sec.length; i++) {
+            const section = sec[i];
 
+            Viewport(section)
+            ? section.classList.add("section--active")
+            : section.classList.remove("section--active");
+        }
+    });
+};
 
 // Make sections active
 
+addActiveClass(isInViewport);
+
+const scrollByClick = () => {
+    const link = document.querySelectorAll('a[href^="#"]');
+}
+
 
 // Build a global variable
+const Viewport = (elem) => {
+    const bonding = elem.getBoundingClientREct();
+
+    return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) && 
+        boudning.right <=
+        (window.innerWidth || document.documentElement.clientWidth)
+
+    
+    );
+};
