@@ -23,6 +23,22 @@ const links = document.querySelectorAll('.menu__link');
 const sec = document.querySelectorAll('section');
 
 const secs = document.getElementsByTagName("section");
+
+const isInViewport = (elem) => {
+    const bounding = elem.getBoundingClientRect();
+
+    return (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+        bounding.right <=
+        (window.innerWidth || document.documentElement.clientWidth)
+
+
+    );
+};
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -88,7 +104,7 @@ const addActiveClass = (isInViewport) => {
         for (let i = 0; i < sec.length; i++) {
             const section = sec[i];
 
-            Viewport(section)
+            isInViewport(section)
             ? section.classList.add("section--active")
             : section.classList.remove("section--active");
         }
@@ -105,17 +121,3 @@ const scrollByClick = () => {
 
 
 // Build a global variable
-const Viewport = (elem) => {
-    const bonding = elem.getBoundingClientREct();
-
-    return (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) && 
-        boudning.right <=
-        (window.innerWidth || document.documentElement.clientWidth)
-
-    
-    );
-};
